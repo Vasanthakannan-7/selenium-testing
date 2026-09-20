@@ -416,6 +416,1004 @@
 
 </script>
 
+
+<!-- ==================== FOOTER ==================== -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <h2>Contact Us</h2>
+
+        <p>
+            Selenium Testing Practice
+        </p>
+
+        <p>
+            Created for Selenium WebDriver Practical Programs
+        </p>
+
+        <p>
+            Email:
+            <a href="mailto:yourmail@gmail.com">
+                yourmail@gmail.com
+            </a>
+        </p>
+
+
+        <hr>
+
+
+        <h2>Selenium Programs 1 - 15</h2>
+
+        <p>
+            Click any program below to view the complete Java Selenium code.
+        </p>
+
+
+        <!-- PROGRAM 1 -->
+
+        <details>
+
+            <summary>
+                Program 1 - Verify Google Title and URL
+            </summary>
+
+            <pre><code>
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Program1 {
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://www.google.com");
+
+        String title = driver.getTitle();
+        String url = driver.getCurrentUrl();
+
+        System.out.println("Title: " + title);
+        System.out.println("URL: " + url);
+
+        if (title.equals("Google"))
+            System.out.println("Title verified successfully");
+
+        if (url.contains("google.co.in"))
+            System.out.println("Redirected to google.co.in");
+        else
+            System.out.println("Redirection is different");
+
+        driver.quit();
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <!-- PROGRAM 2 -->
+
+        <details>
+
+            <summary>
+                Program 2 - Open Google using Chrome
+            </summary>
+
+            <pre><code>
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Program2 {
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://www.google.co.in");
+
+        System.out.println("Title: " + driver.getTitle());
+        System.out.println("URL: " + driver.getCurrentUrl());
+
+        driver.quit();
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <!-- PROGRAM 3 -->
+
+        <details>
+
+            <summary>
+                Program 3 - Open Google using Internet Explorer
+            </summary>
+
+            <pre><code>
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+
+public class Program3 {
+
+    public static void main(String[] args) {
+
+        System.setProperty(
+            "webdriver.ie.driver",
+            "C:\\Drivers\\IEDriverServer.exe"
+        );
+
+        WebDriver driver =
+            new InternetExplorerDriver();
+
+        driver.get("https://www.google.co.in");
+
+        System.out.println(
+            "Title: " + driver.getTitle()
+        );
+
+        driver.quit();
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <!-- PROGRAM 4 -->
+
+        <details>
+
+            <summary>
+                Program 4 - Create Browser Instance Based on Browser Name
+            </summary>
+
+            <pre><code>
+import java.util.Scanner;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Program4 {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter browser name: ");
+
+        String browser = sc.nextLine();
+
+        WebDriver driver = null;
+
+        if (browser.equalsIgnoreCase("chrome")) {
+
+            driver = new ChromeDriver();
+
+        }
+        else if (browser.equalsIgnoreCase("firefox")) {
+
+            driver = new FirefoxDriver();
+
+        }
+        else {
+
+            System.out.println("Invalid browser");
+            return;
+        }
+
+        driver.get(
+            "https://vasanthakannan-7.github.io/selenium-testing/"
+        );
+
+        System.out.println(
+            "Title: " + driver.getTitle()
+        );
+
+        driver.quit();
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <!-- PROGRAM 5 -->
+
+        <details>
+
+            <summary>
+                Program 5 - Search for Specified Option in ListBox
+            </summary>
+
+            <pre><code>
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Program5 {
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get(
+            "https://vasanthakannan-7.github.io/selenium-testing/"
+        );
+
+        List&lt;WebElement&gt; options =
+            driver.findElements(
+                By.cssSelector("#country option")
+            );
+
+        String search = "India";
+
+        boolean found = false;
+
+        for (WebElement option : options) {
+
+            if (option.getText().equals(search)) {
+
+                found = true;
+                break;
+            }
+        }
+
+        if (found)
+            System.out.println(
+                "Option found: " + search
+            );
+        else
+            System.out.println(
+                "Option not found"
+            );
+
+        driver.quit();
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <!-- PROGRAM 6 -->
+
+        <details>
+
+            <summary>
+                Program 6 - Print ListBox Contents in Sorted Order
+            </summary>
+
+            <pre><code>
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Program6 {
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get(
+            "https://vasanthakannan-7.github.io/selenium-testing/"
+        );
+
+        List&lt;WebElement&gt; options =
+            driver.findElements(
+                By.cssSelector("#country option")
+            );
+
+        ArrayList&lt;String&gt; list =
+            new ArrayList&lt;&gt;();
+
+        for (WebElement option : options) {
+
+            list.add(option.getText());
+
+        }
+
+        Collections.sort(list);
+
+        System.out.println(
+            "Sorted Options:"
+        );
+
+        for (String option : list) {
+
+            System.out.println(option);
+
+        }
+
+        driver.quit();
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <!-- PROGRAM 7 -->
+
+        <details>
+
+            <summary>
+                Program 7 - Remove Duplicate Options using HashSet
+            </summary>
+
+            <pre><code>
+import java.util.HashSet;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Program7 {
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get(
+            "https://vasanthakannan-7.github.io/selenium-testing/"
+        );
+
+        List&lt;WebElement&gt; options =
+            driver.findElements(
+                By.cssSelector("#country option")
+            );
+
+        HashSet&lt;String&gt; set =
+            new HashSet&lt;&gt;();
+
+        for (WebElement option : options) {
+
+            set.add(option.getText());
+
+        }
+
+        System.out.println(
+            "Unique Options:"
+        );
+
+        for (String option : set) {
+
+            System.out.println(option);
+
+        }
+
+        driver.quit();
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <!-- PROGRAM 8 -->
+
+        <details>
+
+            <summary>
+                Program 8 - Close All Browsers Without quit()
+            </summary>
+
+            <pre><code>
+import java.util.ArrayList;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Program8 {
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get(
+            "https://vasanthakannan-7.github.io/selenium-testing/"
+        );
+
+        driver.switchTo().newWindow(
+            WindowType.TAB
+        );
+
+        driver.get(
+            "https://vasanthakannan-7.github.io/selenium-testing/"
+        );
+
+        ArrayList&lt;String&gt; windows =
+            new ArrayList&lt;&gt;(
+                driver.getWindowHandles()
+            );
+
+        for (String window : windows) {
+
+            driver.switchTo().window(window);
+
+            driver.close();
+        }
+
+        System.out.println(
+            "All windows closed."
+        );
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <!-- PROGRAM 9 -->
+
+        <details>
+
+            <summary>
+                Program 9 - Handle All Locators
+            </summary>
+
+            <pre><code>
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Program9 {
+
+    static WebElement getElement(
+        WebDriver driver,
+        String type,
+        String value) {
+
+        switch (type.toLowerCase()) {
+
+        case "id":
+            return driver.findElement(
+                By.id(value)
+            );
+
+        case "name":
+            return driver.findElement(
+                By.name(value)
+            );
+
+        case "classname":
+            return driver.findElement(
+                By.className(value)
+            );
+
+        case "tagname":
+            return driver.findElement(
+                By.tagName(value)
+            );
+
+        case "linktext":
+            return driver.findElement(
+                By.linkText(value)
+            );
+
+        case "partiallinktext":
+            return driver.findElement(
+                By.partialLinkText(value)
+            );
+
+        case "css":
+            return driver.findElement(
+                By.cssSelector(value)
+            );
+
+        case "xpath":
+            return driver.findElement(
+                By.xpath(value)
+            );
+
+        default:
+            throw new IllegalArgumentException(
+                "Invalid locator"
+            );
+        }
+    }
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get(
+            "https://vasanthakannan-7.github.io/selenium-testing/"
+        );
+
+        WebElement element =
+            getElement(
+                driver,
+                "id",
+                "fname"
+            );
+
+        System.out.println(
+            "Element found: " +
+            element.getAttribute("id")
+        );
+
+        driver.quit();
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <!-- PROGRAM 10 -->
+
+        <details>
+
+            <summary>
+                Program 10 - Locator with Dynamic Wait
+            </summary>
+
+            <pre><code>
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Program10 {
+
+    static WebElement getElement(
+        WebDriver driver,
+        By locator) {
+
+        WebDriverWait wait =
+            new WebDriverWait(
+                driver,
+                Duration.ofSeconds(10)
+            );
+
+        return wait.until(
+            ExpectedConditions
+                .visibilityOfElementLocated(locator)
+        );
+    }
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get(
+            "https://vasanthakannan-7.github.io/selenium-testing/"
+        );
+
+        driver.findElement(
+            By.id("dynamicButton")
+        ).click();
+
+        WebElement element =
+            getElement(
+                driver,
+                By.id("dynamicMessage")
+            );
+
+        System.out.println(
+            element.getText()
+        );
+
+        driver.quit();
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <!-- PROGRAM 11 -->
+
+        <details>
+
+            <summary>
+                Program 11 - Open Firefox Browser
+            </summary>
+
+            <pre><code>
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Program11 {
+
+    public static void main(String[] args) {
+
+        WebDriver driver =
+            new FirefoxDriver();
+
+        driver.get(
+            "https://vasanthakannan-7.github.io/selenium-testing/"
+        );
+
+        System.out.println(
+            "Title: " +
+            driver.getTitle()
+        );
+
+        driver.quit();
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <!-- PROGRAM 12 -->
+
+        <details>
+
+            <summary>
+                Program 12 - Display Message, Wait 5 Seconds and Close
+            </summary>
+
+            <pre><code>
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Program12 {
+
+    public static void main(String[] args)
+            throws InterruptedException {
+
+        WebDriver driver =
+            new ChromeDriver();
+
+        driver.get(
+            "https://vasanthakannan-7.github.io/selenium-testing/"
+        );
+
+        driver.findElement(
+            By.id("submitButton")
+        ).click();
+
+        System.out.println(
+            "Website opened successfully"
+        );
+
+        Thread.sleep(5000);
+
+        System.out.println(
+            driver.findElement(
+                By.id("result")
+            ).getText()
+        );
+
+        driver.quit();
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <!-- PROGRAM 13 -->
+
+        <details>
+
+            <summary>
+                Program 13 - Upload File using sendKeys()
+            </summary>
+
+            <pre><code>
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Program13 {
+
+    public static void main(String[] args) {
+
+        WebDriver driver =
+            new ChromeDriver();
+
+        driver.get(
+            "https://vasanthakannan-7.github.io/selenium-testing/"
+        );
+
+        String filePath =
+            "C:\\Users\\YourName\\Desktop\\test.txt";
+
+        driver.findElement(
+            By.id("fileUpload")
+        ).sendKeys(filePath);
+
+        System.out.println(
+            "File selected successfully"
+        );
+
+        driver.quit();
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <!-- PROGRAM 14 -->
+
+        <details>
+
+            <summary>
+                Program 14 - Access Link using linkText() and partialLinkText()
+            </summary>
+
+            <pre><code>
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Program14 {
+
+    public static void main(String[] args) {
+
+        WebDriver driver =
+            new ChromeDriver();
+
+        driver.get(
+            "https://vasanthakannan-7.github.io/selenium-testing/"
+        );
+
+        driver.findElement(
+            By.linkText("Selenium Official Page")
+        ).click();
+
+        System.out.println(
+            "Link opened using linkText()"
+        );
+
+        driver.navigate().back();
+
+        driver.findElement(
+            By.partialLinkText("Official Page")
+        ).click();
+
+        System.out.println(
+            "Link opened using partialLinkText()"
+        );
+
+        driver.quit();
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <!-- PROGRAM 15 -->
+
+        <details>
+
+            <summary>
+                Program 15 - Select Multiple Items in Dropdown
+            </summary>
+
+            <pre><code>
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.openqa.selenium.support.ui.Select;
+
+public class Program15 {
+
+    public static void main(String[] args) {
+
+        WebDriver driver =
+            new ChromeDriver();
+
+        driver.get(
+            "https://vasanthakannan-7.github.io/selenium-testing/"
+        );
+
+        WebElement dropdown =
+            driver.findElement(
+                By.id("skills")
+            );
+
+        Select select =
+            new Select(dropdown);
+
+        select.selectByVisibleText("Java");
+
+        select.selectByVisibleText("Python");
+
+        select.selectByVisibleText("Selenium");
+
+        System.out.println(
+            "Selected Options:"
+        );
+
+        List&lt;WebElement&gt; selected =
+            select.getAllSelectedOptions();
+
+        for (WebElement option : selected) {
+
+            System.out.println(
+                option.getText()
+            );
+        }
+
+        driver.quit();
+    }
+}
+            </code></pre>
+
+        </details>
+
+
+        <hr>
+
+        <p>
+            © 2026 Selenium Testing Practice |
+            Created for Selenium WebDriver Learning
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- ==================== FOOTER STYLE ==================== -->
+
+<style>
+
+footer {
+
+    margin-top: 50px;
+
+    background-color: #1f2937;
+
+    color: white;
+
+    padding: 40px 20px;
+
+}
+
+
+.footer-container {
+
+    max-width: 900px;
+
+    margin: auto;
+
+}
+
+
+.footer-container h2 {
+
+    color: white;
+
+    border-bottom: 1px solid #555;
+
+    padding-bottom: 10px;
+
+}
+
+
+.footer-container p {
+
+    color: #ddd;
+
+}
+
+
+.footer-container a {
+
+    color: #60a5fa;
+
+    text-decoration: none;
+
+}
+
+
+.footer-container hr {
+
+    border: 0;
+
+    border-top: 1px solid #555;
+
+    margin: 30px 0;
+
+}
+
+
+/* Program boxes */
+
+details {
+
+    background-color: #111827;
+
+    margin: 15px 0;
+
+    border-radius: 8px;
+
+    border: 1px solid #374151;
+
+    overflow: hidden;
+
+}
+
+
+summary {
+
+    cursor: pointer;
+
+    padding: 15px 20px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    color: white;
+
+    background-color: #374151;
+
+}
+
+
+summary:hover {
+
+    background-color: #4b5563;
+
+}
+
+
+pre {
+
+    margin: 0;
+
+    padding: 20px;
+
+    overflow-x: auto;
+
+    background-color: #0d1117;
+
+    color: #e5e7eb;
+
+    text-align: left;
+
+}
+
+
+code {
+
+    font-family: Consolas, monospace;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+}
+
+
+</style>
+
+
 </body>
 
 </html>
