@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Selenium Practice Page</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px #ccc;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #444;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        select {
+            height: 45px;
+        }
+
+        .multi {
+            height: 130px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .option {
+            margin: 10px 0;
+        }
+
+        .option input {
+            width: auto;
+        }
+
+        a {
+            display: block;
+            margin: 12px 0;
+        }
+
+        #dynamicMessage {
+            margin-top: 15px;
+            padding: 10px;
+            background: #e8f5e9;
+            display: none;
+        }
+
+        .box {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 id="pageTitle">Selenium Practice Page</h1>
+
+    <p>
+        This webpage is created for testing Selenium WebDriver programs.
+    </p>
+
+
+    <!-- TEXT INPUTS -->
+    <h2>1. Text Fields</h2>
+
+    <label for="fname">First Name</label>
+
+    <input
+        type="text"
+        id="fname"
+        name="firstname"
+        class="text-input"
+        placeholder="Enter your first name"
+    >
+
+
+    <label for="username">Username</label>
+
+    <input
+        type="text"
+        id="username"
+        name="username"
+        class="username-field"
+        placeholder="Enter username"
+    >
+
+
+    <label for="password">Password</label>
+
+    <input
+        type="password"
+        id="password"
+        name="password"
+        class="password-field"
+        placeholder="Enter password"
+    >
+
+
+    <!-- TEXTAREA -->
+    <h2>2. Textarea</h2>
+
+    <label for="message">Message</label>
+
+    <textarea
+        id="message"
+        name="message"
+        rows="5"
+        placeholder="Enter your message">
+    </textarea>
+
+
+    <!-- SINGLE DROPDOWN -->
+    <h2>3. Single Dropdown / ListBox</h2>
+
+    <label for="country">Select Country</label>
+
+    <select id="country" name="country" class="country-dropdown">
+
+        <option value="">-- Select Country --</option>
+
+        <option value="india">India</option>
+
+        <option value="usa">USA</option>
+
+        <option value="uk">United Kingdom</option>
+
+        <option value="canada">Canada</option>
+
+        <option value="australia">Australia</option>
+
+    </select>
+
+
+    <!-- MULTIPLE SELECT -->
+    <h2>4. Multiple Select Dropdown</h2>
+
+    <label for="skills">Select Multiple Skills</label>
+
+    <select
+        id="skills"
+        name="skills"
+        class="multi"
+        multiple
+    >
+
+        <option value="java">Java</option>
+
+        <option value="python">Python</option>
+
+        <option value="javascript">JavaScript</option>
+
+        <option value="react">React</option>
+
+        <option value="selenium">Selenium</option>
+
+        <option value="sql">SQL</option>
+
+    </select>
+
+
+    <!-- CHECKBOX -->
+    <h2>5. Checkboxes</h2>
+
+    <div class="option">
+
+        <input
+            type="checkbox"
+            id="javaCheck"
+            name="skill"
+            value="java"
+        >
+
+        <label for="javaCheck">Java</label>
+
+    </div>
+
+
+    <div class="option">
+
+        <input
+            type="checkbox"
+            id="pythonCheck"
+            name="skill"
+            value="python"
+        >
+
+        <label for="pythonCheck">Python</label>
+
+    </div>
+
+
+    <div class="option">
+
+        <input
+            type="checkbox"
+            id="seleniumCheck"
+            name="skill"
+            value="selenium"
+        >
+
+        <label for="seleniumCheck">Selenium</label>
+
+    </div>
+
+
+    <!-- RADIO BUTTON -->
+    <h2>6. Radio Buttons</h2>
+
+    <div class="option">
+
+        <input
+            type="radio"
+            id="male"
+            name="gender"
+            value="male"
+        >
+
+        <label for="male">Male</label>
+
+    </div>
+
+
+    <div class="option">
+
+        <input
+            type="radio"
+            id="female"
+            name="gender"
+            value="female"
+        >
+
+        <label for="female">Female</label>
+
+    </div>
+
+
+    <!-- FILE UPLOAD -->
+    <h2>7. File Upload</h2>
+
+    <label for="fileUpload">Choose a File</label>
+
+    <input
+        type="file"
+        id="fileUpload"
+        name="file"
+    >
+
+
+    <!-- BUTTONS -->
+    <h2>8. Buttons</h2>
+
+    <button
+        id="submitButton"
+        name="submit"
+        class="submit-btn"
+        onclick="submitForm()">
+        Submit
+    </button>
+
+
+    <button
+        id="resetButton"
+        type="reset">
+        Reset
+    </button>
+
+
+    <!-- LINKS -->
+    <h2>9. Links</h2>
+
+    <a
+        href="https://www.google.com"
+        id="googleLink">
+        Google
+    </a>
+
+
+    <a
+        href="https://www.selenium.dev"
+        id="seleniumLink">
+        Selenium Official Page
+    </a>
+
+
+    <a
+        href="https://www.github.com"
+        id="githubLink">
+        GitHub Repository
+    </a>
+
+
+    <!-- XPATH / CSS TEST -->
+    <h2>10. Locator Testing</h2>
+
+    <div
+        id="locatorBox"
+        class="test-box">
+
+        <p id="locatorText">
+            This element can be located using ID, Class, CSS or XPath.
+        </p>
+
+    </div>
+
+
+    <!-- DYNAMIC ELEMENT -->
+    <h2>11. Dynamic Wait Testing</h2>
+
+    <button
+        id="dynamicButton"
+        onclick="showDynamicElement()">
+        Show Dynamic Element
+    </button>
+
+
+    <div id="dynamicMessage">
+
+        Dynamic element appeared successfully!
+
+    </div>
+
+
+    <!-- NEW WINDOW -->
+    <h2>12. Multiple Window Testing</h2>
+
+    <button
+        id="newWindowButton"
+        onclick="openNewWindow()">
+        Open New Window
+    </button>
+
+
+    <!-- RESULT -->
+    <h2>13. Result</h2>
+
+    <div id="result">
+        No action performed yet.
+    </div>
+
+</div>
+
+
+<script>
+
+    function submitForm() {
+
+        document.getElementById("result").innerText =
+            "Form submitted successfully!";
+
+    }
+
+
+    function showDynamicElement() {
+
+        setTimeout(function () {
+
+            document.getElementById("dynamicMessage").style.display = "block";
+
+        }, 3000);
+
+    }
+
+
+    function openNewWindow() {
+
+        window.open(
+            "https://www.selenium.dev",
+            "_blank"
+        );
+
+    }
+
+</script>
+
+</body>
+
+</html>
